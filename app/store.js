@@ -1,10 +1,27 @@
 import TaskCard from "./Models/TaskCard.js";
 
 let _state = {
-  taskCards: [new TaskCard("Test"), new TaskCard("Test 2"), new TaskCard("Test 3")]
+  taskCards: []
 };
 
+function _load() {
+  let data = JSON.parse(localStorage.getItem("taskCards"))
+  console.log(data);
+  if (data) {
+    data.taskCards = data.taskCards.map(c => new TaskCard(c.title, c.tasks, c.id, c.color))
+    _state = data
+  }
+}
+
+_load()
+
 class Store {
+
+  save() {
+    console.log("Saving Data");
+    localStorage.setItem("taskCards", JSON.stringify(_state))
+  }
+
   /**
    * Provides access to application state data
    */

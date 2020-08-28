@@ -1,11 +1,11 @@
 import { generateId } from "../Utils.js"
 
 export default class TaskCard {
-    constructor(title) {
-        this.title = title
-        this.tasks = [{ text: 'filler task', id: generateId() }, { text: 'filler task 1', id: generateId() }, { text: 'filler task 2', id: generateId() }]
-        this.id = generateId()
-        this.color = 'success'
+    constructor(title, tasks, id, color) {
+        this.title = title || "title"
+        this.tasks = tasks || []
+        this.id = id || generateId()
+        this.color = color || 'success'
     }
 
     get Template() {
