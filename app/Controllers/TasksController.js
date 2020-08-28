@@ -34,4 +34,9 @@ export default class TasksController {
     TasksService.delTask(taskId, cardId)
     _drawTasks()
   }
+
+  delCard(id) {
+    TasksService.delCard(id)
+    _drawTasks()
+  }
 }

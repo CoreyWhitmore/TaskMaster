@@ -4,6 +4,10 @@ import { generateId } from "../Utils.js";
 
 //Public
 class TasksService {
+    delCard(id) {
+        let cardIndex = STORE.State.taskCards.findIndex(c => c.id == id)
+        STORE.State.taskCards.splice(cardIndex, 1)
+    }
     delTask(taskId, cardId) {
         let card = STORE.State.taskCards.find(c => c.id == cardId)
         let taskIndex = card.tasks.findIndex(c => c.id == taskId)

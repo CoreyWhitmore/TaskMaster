@@ -3,16 +3,16 @@ import { generateId } from "../Utils.js"
 export default class TaskCard {
     constructor(title) {
         this.title = title
-        this.tasks = [{ text: 'filler task', id: generateId() }, { text: 'filler task', id: generateId() }]
+        this.tasks = [{ text: 'filler task', id: generateId() }, { text: 'filler task 1', id: generateId() }, { text: 'filler task 2', id: generateId() }]
         this.id = generateId()
         this.color = 'success'
     }
 
     get Template() {
         return `
-        <div class="col-4 d-flex justify-content-center">
+        <div class="col-4 d-flex justify-content-center mb-2">
                 <div class="card w-75">
-                    <div class=" bg-${this.color} p-2">${this.title}</div>
+                    <div class=" d-flex justify-content-between bg-${this.color} p-2">${this.title}<i class="fa fa-times" onclick="app.tasksController.delCard('${this.id}')" aria-hidden="true"></i></div>
                     <div class="card-body" id="${this.id}">
                         ${this.tasksTemplate}
                         <form class="form-inline" onsubmit="app.tasksController.createTask(event, '${this.id}')">
