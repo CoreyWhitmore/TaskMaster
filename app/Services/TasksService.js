@@ -15,12 +15,12 @@ class TasksService {
     }
     createTask(text, id) {
         let card = STORE.State.taskCards.find(c => c.id == id)
-        let task = { text: text, id: generateId() }
+        let task = { text: text, id: generateId(), }
         card.tasks.push(task)
     }
 
-    createTaskCard(title) {
-        let card = new TaskCard(title)
+    createTaskCard(title, color) {
+        let card = new TaskCard(title, color)
         STORE.State.taskCards.push(card)
     }
 }

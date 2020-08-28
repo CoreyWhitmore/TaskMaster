@@ -21,7 +21,9 @@ export default class TasksController {
   createTaskCard(event) {
     event.preventDefault()
     let title = event.target.title.value
-    TasksService.createTaskCard(title)
+    let color = event.target.color.value
+    TasksService.createTaskCard(title, color)
+    console.log("color" + color);
     _drawTasks()
   }
 
@@ -34,6 +36,7 @@ export default class TasksController {
 
   delTask(taskId, cardId) {
     //User confirmation
+    // @ts-ignore
     Swal.fire({
       title: 'Are you sure you want to delete this task??',
       text: "You won't be able to revert this!",
@@ -44,6 +47,7 @@ export default class TasksController {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
+        // @ts-ignore
         Swal.fire(
           'Deleted!',
           'Your task has been deleted.',
@@ -57,6 +61,7 @@ export default class TasksController {
 
   delCard(id) {
     //User confirmation
+    // @ts-ignore
     Swal.fire({
       title: 'Are you sure you want to delete this card??',
       text: "You won't be able to revert this!",
@@ -67,6 +72,7 @@ export default class TasksController {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.value) {
+        // @ts-ignore
         Swal.fire(
           'Deleted!',
           'Your Card has been deleted.',
